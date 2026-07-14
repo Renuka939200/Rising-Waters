@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prediction Result | Rising Waters</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+.result-card{
+
+    width:90%;
+    max-width:950px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    padding:40px;
+
+    border-radius:20px;
+
+    color:white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.result-title{
+
+    text-align:center;
+
+    font-size:40px;
+
+    margin-bottom:20px;
+
+}
+
+.prediction{
+
+    text-align:center;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    margin-bottom:20px;
+
+}
+
+.safe{
+
+    color:#00ff99;
+
+}
+
+.danger{
+
+    color:#ff4d4d;
+
+}
+
+.confidence{
+
+    text-align:center;
+
+    font-size:22px;
+
+    margin-bottom:30px;
+
+}
+
+.summary{
+
+    margin-top:30px;
+
+}
+
+.summary h2{
+
+    color:#00d4ff;
+
+    margin-bottom:15px;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+table td{
+
+    padding:14px;
+
+    border-bottom:1px solid rgba(255,255,255,.25);
+
+}
+
+.graph{
+
+    margin-top:40px;
+
+}
+
+.graph h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#00d4ff;
+
+}
+
+.graph img{
+
+    width:100%;
+
+    border-radius:15px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+
+}
+
+.recommendation{
+
+    margin-top:40px;
+
+    background:rgba(255,255,255,.12);
+
+    padding:25px;
+
+    border-radius:15px;
+
+}
+
+.recommendation h2{
+
+    color:#00d4ff;
+
+    margin-bottom:15px;
+
+}
+
+.recommendation ul{
+
+    margin-left:20px;
+
+    line-height:2;
+
+}
+
+.back{
+
+    margin-top:40px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="result-card">
+
+<h1 class="result-title">
+
+Prediction Result
+
+</h1>
+
+<div class="prediction {{status}}">
+
+{{prediction}}
+
+</div>
+
+<div class="confidence">
+
+Confidence Score :
+<strong>{{confidence}}%</strong>
+
+</div>
+
+<div class="summary">
+
+<h2>Weather Summary</h2>
+
+<table>
+
+<tr>
+
+<td>Annual Rainfall</td>
+
+<td>{{annual}} mm</td>
+
+</tr>
+
+<tr>
+
+<td>Monsoon Rainfall</td>
+
+<td>{{monsoon}} mm</td>
+
+</tr>
+
+<tr>
+
+<td>River Level</td>
+
+<td>{{river}} m</td>
+
+</tr>
+
+<tr>
+
+<td>Cloud Coverage</td>
+
+<td>{{cloud}} %</td>
+
+</tr>
+
+<tr>
+
+<td>Humidity</td>
+
+<td>{{humidity}} %</td>
+
+</tr>
+
+<tr>
+
+<td>Temperature</td>
+
+<td>{{temperature}} °C</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="graph">
+
+<h2>Current Weather Parameters</h2>
+
+<img src="{{ url_for('static', filename='graphs/current_input.png') }}">
+
+</div>
+
+<div class="recommendation">
+
+<h2>Recommended Actions</h2>
+
+{% if status=="danger" %}
+
+<ul>
+
+<li>Issue flood warnings immediately.</li>
+
+<li>Alert local authorities and emergency services.</li>
+
+<li>Evacuate residents from low-lying areas.</li>
+
+<li>Monitor river levels continuously.</li>
+
+<li>Deploy rescue teams and emergency resources.</li>
+
+<li>Keep emergency shelters ready.</li>
+
+</ul>
+
+{% else %}
+
+<ul>
+
+<li>No immediate flood threat detected.</li>
+
+<li>Continue regular weather monitoring.</li>
+
+<li>Stay updated with official weather forecasts.</li>
+
+<li>Maintain preparedness during monsoon season.</li>
+
+</ul>
+
+{% endif %}
+
+</div>
+
+<div class="back">
+
+<a href="/">
+
+<button>
+
+🔄 Predict Again
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

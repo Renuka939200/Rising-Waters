@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rising Waters</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<nav class="navbar">
+
+<h2>🌊 Rising Waters</h2>
+
+<div>
+
+<a href="/">Home</a>
+
+<a href="/about">About</a>
+
+<a href="/contact">Contact</a>
+
+</div>
+
+</nav>
+<div class="overlay">
+
+    <div class="glass-card">
+
+        <h1>🌊 Rising Waters</h1>
+
+        <p class="subtitle">
+            Intelligent Flood Prediction & Early Warning System
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <div class="input-group">
+
+                <label>Annual Rainfall (mm)</label>
+
+                <input
+                    type="number"
+                    name="annual_rainfall"
+                    step="0.01"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Monsoon Rainfall (mm)</label>
+
+                <input
+                    type="number"
+                    name="monsoon_rainfall"
+                    step="0.01"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>River Level (m)</label>
+
+                <input
+                    type="number"
+                    name="river_level"
+                    step="0.01"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Cloud Coverage (%)</label>
+
+                <input
+                    type="number"
+                    name="cloud_coverage"
+                    step="0.01"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Humidity (%)</label>
+
+                <input
+                    type="number"
+                    name="humidity"
+                    step="0.01"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Temperature (°C)</label>
+
+                <input
+                    type="number"
+                    name="temperature"
+                    step="0.01"
+                    required>
+
+            </div>
+
+            <button type="submit">
+
+                Predict Flood Risk
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
